@@ -8,10 +8,10 @@ if (!isset($_SESSION['user_id'])) {
     die('Devi fare il login');
 }
 
-if (isset($_SESSION['role']) && $_SESSION['role'] != 'admin') {
-    die('Devi essere un amministratore');
-}
 
+if (isset($_SESSION['role']) && $_SESSION['role'] != 'admin') {
+    die('Tu non puoi passare!');
+}
 
 // Query per recuperare tutti gli utenti
 $result = $conn->query("SELECT id, username, role FROM users ORDER BY id");
