@@ -12,8 +12,8 @@ if (!isset($_SESSION['user_id'])) {
 $invoice_id = $_GET['id'] ?? 0;
 $user_id = $_SESSION['user_id'];
 
-$stmt = $conn->prepare("SELECT * FROM invoices WHERE id = ?");
-$stmt->bind_param("i", $invoice_id);
+$stmt = $conn->prepare("SELECT * FROM invoices WHERE id = ? and user_id = ?");
+$stmt->bind_param("ii", $invoice_id, $_SESSION['user_id']);
 $stmt->execute();
 $result = $stmt->get_result();
 
